@@ -65,10 +65,10 @@ public class BgNumberTranslatorTests {
 
     result = nt.getWholeNumberAsText(8L);
     Assertions.assertEquals("осем", result);
-//
+
     result = nt.getWholeNumberAsText(9L);
     Assertions.assertEquals("девет", result);
-//
+
     result = nt.getWholeNumberAsText(10L);
     Assertions.assertEquals("десет", result);
 
