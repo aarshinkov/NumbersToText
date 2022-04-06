@@ -18,6 +18,28 @@ public abstract class NumberTranslator {
 
   public abstract String getWholeNumberAsText(Long number);
 
+  public List<Long> fragmentNumber(Long number) {
+
+    final int startLevel = getNumberLevel(number);
+
+    return fragmentNumber(number, 0L, 0L, startLevel);
+  }
+
+  private List<Long> fragmentNumber(Long number, Long stepsSum, Long prevStep, Integer currentLevel) {
+    final int power = (int) Math.pow(10, currentLevel - 1);
+
+    long base = ((number / power) * power);
+    long stepResult = base - prevStep;
+    prevStep = base;
+
+    digits.add(stepResult);
+    if (currentLevel == 1) {
+      return digits;
+    }
+    currentLevel--;
+    return fragmentNumber(number, stepsSum, prevStep, currentLevel);
+  }
+
   /**
    * Determines the level of a number. The levels are defined as number in range like this:<br/><br/>
    * 0-10:      level 1<br/>

@@ -1,5 +1,7 @@
 package com.aarshinkov.main;
 
+import java.util.List;
+
 /**
  *
  * @author Atanas Yordanov Arshinkov
@@ -9,6 +11,10 @@ public class BgNumberTranslator extends NumberTranslator {
 
   @Override
   public String getWholeNumberAsText(Long number) {
+    // Fragment number
+    List<Long> digits = fragmentNumber(number);
+
+
     StringBuilder text = new StringBuilder();
 
     for (int section = numberSections.size(); section >= 1; section--) {
